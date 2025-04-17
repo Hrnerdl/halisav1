@@ -7,44 +7,37 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container" id="mainPage">
-        <h1 class="text-center mb-4">Halısaha Takım Kurma Programı</h1>
-        <div class="row">
-            <!-- Oyuncu Ekleme Formu -->
-            <div class="col-md-4">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Oyuncu Ekle / Düzenle</h5>
-                        <div class="mb-3">
-                            <input type="text" id="name" class="form-control" placeholder="Ad Soyad">
-                        </div>
-                        <div class="mb-3">
-                            <select id="position" class="form-select">
-                                <option value="" selected>Standart mevki seçin</option>
-                                <option value="goalkeeper">Kaleci</option>
-                                <option value="defender">Stoper</option>
-                                <option value="midfielder">Orta Saha</option>
-                                <option value="forward">Forvet</option>
-                            </select>
-                        </div>
-                        <button class="btn btn-primary w-100 mb-2" onclick="addPlayer()">Oyuncu Ekle</button>
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+        <h1 class="text-center">Halısaha Takım Kurma Programı</h1>
 
-            <!-- Oyuncu Listesi -->
-            <div class="col-md-8">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Oyuncular</h5>
-                        <div id="playerList" class="list-group">
-                            <!-- Oyuncular burada listelenecek -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Oyuncu Ekleme Formu -->
+        <div class="form-section">
+            <h2>Oyuncu Ekle</h2>
+            <input type="text" id="name" placeholder="Ad Soyad">
+            <select id="position">
+                <option value="" selected>Mevki Seçiniz</option>
+                <option value="Kaleci">Kaleci</option>
+                <option value="Defans">Defans</option>
+                <option value="Orta Saha">Orta Saha</option>
+                <option value="Forvet">Forvet</option>
+            </select>
+            <button onclick="addPlayer()">Oyuncu Ekle</button>
+        </div>
+
+        <!-- Oyuncu Listesi -->
+        <div class="list-section">
+            <h2>Oyuncu Listesi</h2>
+            <div id="playerList"></div>
+        </div>
+
+        <!-- Takım Oluşturma -->
+        <div class="team-section">
+            <h2>Takım Oluştur</h2>
+            <button onclick="createTeams()">Takımları Oluştur</button>
+            <div id="teams"></div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
