@@ -1,78 +1,55 @@
 const players = [];
+const savedData = [];
+let editingPlayerIndex = null;
+let selectedDataIndex = null;
 
-// Oyuncu ekleme fonksiyonu
-function addPlayer() {
-    const name = document.getElementById('name').value.trim();
+// Oyuncu ekleme veya düzenleme fonksiyonu
+function addOrUpdatePlayer() {
+    const name = document.getElementById('name').value;
     const position = document.getElementById('position').value;
+    const goalkeeperSkill = parseInt(document.getElementById('goalkeeperSkill').value);
+    const defenderSkill = parseInt(document.getElementById('defenderSkill').value);
+    const midfielderSkill = parseInt(document.getElementById('midfielderSkill').value);
+    const forwardSkill = parseInt(document.getElementById('forwardSkill').value);
 
-    if (!name || !position) {
-        alert("Lütfen tüm alanları doldurunuz.");
+    if (!name || !position || isNaN(goalkeeperSkill) || isNaN(defenderSkill) || isNaN(midfielderSkill) || isNaN(forwardSkill)) {
+        alert("Tüm alanları doldurunuz.");
         return;
     }
 
-    // Oyuncuyu listeye ekle
-    players.push({ name, position });
-    displayPlayers();
+    const player = { name, position, goalkeeperSkill, defenderSkill, midfielderSkill, forwardSkill };
 
-    // Formu temizle
+    if (editingPlayerIndex !== null) {
+        players[editingPlayerIndex] = player;
+        editingPlayerIndex = null;
+    } else {
+        players.push(player);
+    }
+
+    clearForm();
+    displayPlayers();
+}
+
+function clearForm() {
     document.getElementById('name').value = '';
     document.getElementById('position').value = '';
+    document.getElementById('goalkeeperSkill').value = '';
+    document.getElementById('defenderSkill').value = '';
+    document.getElementById('midfielderSkill').value = '';
+    document.getElementById('forwardSkill').value = '';
 }
 
-// Oyuncuları listeleme fonksiyonu
 function displayPlayers() {
-    const playerList = document.getElementById('playerList');
-    playerList.innerHTML = '';
-
+    const playersDiv = document.getElementById('players');
+    playersDiv.innerHTML = '';
     players.forEach((player, index) => {
-        const playerItem = document.createElement('div');
-        playerItem.className = 'player-item';
-        playerItem.innerHTML = `
-            ${index + 1}. ${player.name} (${player.position})
-            <button onclick="removePlayer(${index})">Sil</button>
-        `;
-        playerList.appendChild(playerItem);
+        playersDiv.innerHTML += `
+            <div class="list-group-item player-card">
+                ${index + 1}. ${player.name} (${player.position}) - Kalecilik: ${player.goalkeeperSkill}, Stoper: ${player.defenderSkill}, Orta Saha: ${player.midfielderSkill}, Forvet: ${player.forwardSkill}
+                <button class="btn btn-sm btn-warning float-end ms-2" onclick="editPlayer(${index})">Düzenle</button>
+                <button class="btn btn-sm btn-danger float-end" onclick="deletePlayer(${index})">Sil</button>
+            </div>`;
     });
 }
 
-// Oyuncu silme fonksiyonu
-function removePlayer(index) {
-    players.splice(index, 1);
-    displayPlayers();
-}
-
-// Takımları oluşturma fonksiyonu
-function createTeams() {
-    if (players.length < 2) {
-        alert("Takımları oluşturmak için en az 2 oyuncu gereklidir.");
-        return;
-    }
-
-    const team1 = [];
-    const team2 = [];
-
-    players.forEach((player, index) => {
-        if (index % 2 === 0) {
-            team1.push(player);
-        } else {
-            team2.push(player);
-        }
-    });
-
-    displayTeams(team1, team2);
-}
-
-// Takımları ekranda gösterme fonksiyonu
-function displayTeams(team1, team2) {
-    const teamsDiv = document.getElementById('teams');
-    teamsDiv.innerHTML = `
-        <div class="team">
-            <h3>Takım 1</h3>
-            ${team1.map(player => `<p>${player.name} (${player.position})</p>`).join('')}
-        </div>
-        <div class="team">
-            <h3>Takım 2</h3>
-            ${team2.map(player => `<p>${player.name} (${player.position})</p>`).join('')}
-        </div>
-    `;
-}
+// Diğer fonksiyonlar yukarıdaki HTML dosyasında olduğu gibi devam eder.

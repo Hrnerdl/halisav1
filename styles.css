@@ -1,79 +1,32 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
+    background-color: #f8f9fa;
 }
 
 .container {
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    margin-top: 20px;
 }
 
-h1, h2 {
-    text-align: center;
-    color: #333;
+.team-title {
+    font-weight: bold;
+    margin-top: 20px;
 }
 
-.form-section, .list-section, .team-section {
-    margin-bottom: 20px;
+.player-card {
+    margin-bottom: 10px;
 }
 
-input, select, button {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.saved-data {
+    margin-top: 30px;
 }
 
-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.selected-data {
+    background-color: #d1ecf1 !important; /* Açık mavi arka plan */
 }
 
-button:hover {
-    background-color: #0056b3;
+.hidden {
+    display: none;
 }
 
-#playerList, #teams {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-}
-
-.player-item, .team {
-    padding: 10px;
-    margin-bottom: 5px;
-    background: #eff5ff;
-    border: 1px solid #007bff;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.player-item button {
-    background-color: #dc3545;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.player-item button:hover {
-    background-color: #a71d2a;
+.match-result-table {
+    margin-top: 20px;
 }
