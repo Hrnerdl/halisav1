@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halısaha Takım Kurma</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="mainPage">
+        <h1 class="text-center mb-4">Halısaha Takım Kurma Programı</h1>
+        <div class="row">
+            <!-- Oyuncu Ekleme Formu -->
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Oyuncu Ekle / Düzenle</h5>
+                        <div class="mb-3">
+                            <input type="text" id="name" class="form-control" placeholder="Ad Soyad">
+                        </div>
+                        <div class="mb-3">
+                            <select id="position" class="form-select">
+                                <option value="" selected>Standart mevki seçin</option>
+                                <option value="goalkeeper">Kaleci</option>
+                                <option value="defender">Stoper</option>
+                                <option value="midfielder">Orta Saha</option>
+                                <option value="forward">Forvet</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary w-100 mb-2" onclick="addPlayer()">Oyuncu Ekle</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oyuncu Listesi -->
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Oyuncular</h5>
+                        <div id="playerList" class="list-group">
+                            <!-- Oyuncular burada listelenecek -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
